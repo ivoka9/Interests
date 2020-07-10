@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>interests</title>
+  </head>
+  <body>
+    <h1>You have logged in</h1>
+
+    <form action="/interests/add" method="POST">
+      <input type="text" placeholder="Add your own" name="interest" />
+      <input type="submit" />
+      <div id="allintersts">
+        <h3>All interets</h3>
+        <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
+        <p><%= interest.interest %></p>
+        <% }); %> <% } %>
+      </div>
+
+      <div id="userinterets">
+        <h3>User interets</h3>
+
+        <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
+        <p><%= interest %></p>
+        <% }); %> <% } %>
+      </div>
+    </form>
+  </body>
+</html>

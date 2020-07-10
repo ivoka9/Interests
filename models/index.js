@@ -18,4 +18,5 @@ mongoose
 
 module.exports = {
   User: require("./User"),
+  allInterests: require("./Interests"),
 };
