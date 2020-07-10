@@ -3,18 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>interests</title>
+    <script defer
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <script defer src="/scripts/interests.js"></script>
   </head>
   <body>
     <h1>You have logged in</h1>
-
-    <form action="/interests/add" method="POST">
+   
+    <form action="/interests/add " method="POST">
+      <% if(err){ %>
+        <p>It already excists</p>
+      <% } %>
       <input type="text" placeholder="Add your own" name="interest" />
       <input type="submit" />
+    </form>
+
       <div id="allintersts">
         <h3>All interets</h3>
         <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
-        <p><%= interest.interest %></p>
+        <input class='table' id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
         <% }); %> <% } %>
       </div>
 
@@ -22,9 +33,10 @@
         <h3>User interets</h3>
 
         <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
-        <p><%= interest %></p>
+        <input class='usertable' value="<%= interest %>"></input >
         <% }); %> <% } %>
       </div>
-    </form>
+      <button id='save'>Save</button>
+      
   </body>
 </html>

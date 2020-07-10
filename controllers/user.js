@@ -52,6 +52,8 @@ router.post("/login", async (req, res) => {
 
 // User tryies to Login
 router.post("/interests", async (req, res) => {
+  let err = "";
+
   try {
     // Finding the user in the DB and looks if the password matches
 
@@ -71,6 +73,7 @@ router.post("/interests", async (req, res) => {
         const data = {
           allInterests: allInterests,
           userinterests: findUser.interests,
+          err: err,
         };
         return res.render("user/interests.ejs", data);
       }
@@ -91,20 +94,45 @@ router.post("/interests", async (req, res) => {
   }
 });
 
+// allowing the user to create new interests and add them
+// to his own databse
 router.post("/interests/add", async (req, res) => {
+  let err = "";
   try {
-    await db.allInterests.create(req.body);
-    await db.User.findByIdAndUpdate(req.session.user.id, {
-      $push: { interests: req.body.interest },
-    });
+    try {
+      await db.allInterests.create(req.body);
+      await db.User.findByIdAndUpdate(req.session.user.id, {
+        $push: { interests: req.body.interest },
+      });
+    } catch {
+      err = "err";
+    }
+
     const allInterests = await db.allInterests.find({});
     const findUser = await db.User.findById(req.session.user.id);
 
     const data = {
       allInterests: allInterests,
       userinterests: findUser.interests,
+      err: err,
     };
     return res.render("user/interests.ejs", data);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
+router.put("/interests/api", async (req, res) => {
+  try {
+    let arr = req.body;
+    let updates = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      element = await db.allInterests.findById(arr[i]);
+      updates.push(element.interest);
+    }
+    console.log(updates);
   } catch (err) {
     console.log(err);
     res.send(err);
