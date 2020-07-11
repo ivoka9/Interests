@@ -1,7 +1,3 @@
-console.log("work");
-console.log($(".table").length);
-console.log($(".usertable").length);
-
 // it removes any elements that are already in the user base
 for (let i = 0; i < $(".usertable").length; i++) {
   for (let j = 0; j < $(".table").length; j++) {
@@ -63,6 +59,21 @@ function table(id) {
     `<input class="table" onclick='usertable(this.id)' id="${id}" value="${value}" />`
   );
 }
+
+// search box function
+
+$("#search").on("keyup", () => {
+  const value = $("#search").val();
+  for (let i = 0; i < $(".table").length; i++) {
+    const box = $(".table").eq(i).val();
+    console.log(box.indexOf(value));
+    if (box.indexOf(value) != 0) {
+      $(".table").eq(i).css("display", "none");
+    } else {
+      $(".table").eq(i).css("display", "block");
+    }
+  }
+});
 
 // sends the data back to the server so we can create
 // his new interests list/array

@@ -1,0 +1,44 @@
+.card-special {
+  height: 350px;
+  overflow: auto;
+}
+
+.input-find {
+  width: 45%;
+  height: 40px;
+  margin-left: 0;
+}
+
+.btn-special {
+  padding: 0;
+  width: 30%;
+  height: 40px;
+}
+
+.card-body {
+  padding-top: 0px;
+}
+
+.pricing {
+  height: 100vh;
+  width: 100%;
+}
+
+.table,
+.usertable {
+  border: none;
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  background-color: #0062e6;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.table:hover,
+.usertable:hover {
+  background-color: #33aeff;
+  transform: scale(1.05);
+}

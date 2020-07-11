@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>interests</title>
+    <link rel="stylesheet" href="/styles/interestsBootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    <script></script>
+    <link rel="stylesheet" href="/styles/interests.css">
     <script defer
     src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -12,31 +15,56 @@
     <script defer src="/scripts/interests.js"></script>
   </head>
   <body>
-    <h1>You have logged in</h1>
-   
-    <form action="/interests/add " method="POST">
-      <% if(err){ %>
-        <p>It already excists</p>
-      <% } %>
-      <input type="text" placeholder="Add your own" name="interest" />
-      <input type="submit" />
-    </form>
-
-      <div id="allintersts">
-        <h3>All interets</h3>
-        <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
-        <input class='table' id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
-        <% }); %> <% } %>
+    
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
+      <div class="col-lg-4 ">
+        <div class="card mb-5 mb-lg-0 ">
+          <h6 class="card-price text-center mt-5">All interests</h6>
+          <form action="/interests/add " method="POST">
+            <% if(err){ %>
+              <p class='ml-5 mt-2' style="color: red">It already excists</p>
+            <% } %>
+            <input type="text" placeholder="Add your own" name="interest" id='search' class='input-find ml-5' />
+            <input type="submit" class=' btn-special btn pb-1 btn-primary ml-2   '  />
+          </form>
+          <div class="card-body card-special">
+           
+            <hr>
+            <div id="allintersts" >
+              <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
+              <input class='table' readonly id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
+              <% }); %> <% } %>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div id="userinterets">
-        <h3>User interets</h3>
-
-        <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
-        <input class='usertable' value="<%= interest %>"></input >
-        <% }); %> <% } %>
-      </div>
-      <button id='save'>Save</button>
+    
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0 ">
+          <h6 class="card-price text-center mt-5">Your interests</h6>
+          <div class="card-body card-special">
+           
+            <hr>
+            <div id="userinterets">
       
+              <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
+              <input class='usertable' value="<%= interest %>"></input >
+              <% }); %> <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    
+      <button id='save'>Save</button>
+      <a href="/post"> See your all posts that u like </a>
   </body>
 </html>

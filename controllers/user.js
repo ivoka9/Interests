@@ -6,7 +6,6 @@ const bcrypt = require("bcryptjs");
 
 // internal  Moduels
 const db = require("../models");
-const { allInterests } = require("../models");
 
 // Going to Login page
 
@@ -132,7 +131,9 @@ router.put("/interests/api", async (req, res) => {
       element = await db.allInterests.findById(arr[i]);
       updates.push(element.interest);
     }
-    console.log(updates);
+    await db.User.findByIdAndUpdate(req.session.user.id, {
+      interests: updates,
+    });
   } catch (err) {
     console.log(err);
     res.send(err);
