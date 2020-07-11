@@ -4,8 +4,12 @@
 }
 
 .input-find {
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
   width: 45%;
   height: 40px;
+  margin-top: 20px;
   margin-left: 0;
 }
 
@@ -20,13 +24,14 @@
 }
 
 .pricing {
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 100%;
 }
 
 .table,
 .usertable {
   border: none;
+  border-radius: 5px;
   border-bottom: 1px solid black;
   text-align: center;
   font-size: 16px;
@@ -41,4 +46,35 @@
 .usertable:hover {
   background-color: #33aeff;
   transform: scale(1.05);
+}
+
+.usertable {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.control {
+  margin: 80px 66px;
+}
+
+.btn-user {
+  margin: 0 auto;
+  width: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.nav-custom {
+  color: #c71c2a;
+  opacity: 0.75;
+  background-color: #28a745;
+  transition: 0.4s;
+}
+.nav-custom:hover {
+  opacity: 1;
+  color: #c71c2a;
 }

@@ -15,19 +15,35 @@
     <script defer src="/scripts/interests.js"></script>
   </head>
   <body>
-    
+    <nav >
+    <ul class="nav nav-pills nav-fill" >
+      <li class="nav-item">
+        <a class=" nav-active nav-link  nav-custom  rounded-0" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a href="/post" class="nav-link nav-custom rounded-0" > See your all posts that u like </a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-custom rounded-0" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled nav-custom rounded-0" href="#">Disabled</a>
+      </li>
+    </ul>
+    </nav>
 <section class="pricing py-5">
   <div class="container">
     <div class="row">
       <!-- Free Tier -->
-      <div class="col-lg-4 ">
+      <div class="col-lg-4 control ">
         <div class="card mb-5 mb-lg-0 ">
           <h6 class="card-price text-center mt-5">All interests</h6>
           <form action="/interests/add " method="POST">
             <% if(err){ %>
-              <p class='ml-5 mt-2' style="color: red">It already excists</p>
+              <p class='ml-5 mt-2' style="color: red ;">It already excists</p>
             <% } %>
-            <input type="text" placeholder="Add your own" name="interest" id='search' class='input-find ml-5' />
+            <input type="text" autocomplete="off" placeholder="Add your own" name="interest" id='search' class='input-find ml-5' />
             <input type="submit" class=' btn-special btn pb-1 btn-primary ml-2   '  />
           </form>
           <div class="card-body card-special">
@@ -43,19 +59,20 @@
       </div>
     
       <!-- Pro Tier -->
-      <div class="col-lg-4">
+      <div class="col-lg-4 control pixels">
         <div class="card mb-5 mb-lg-0 ">
           <h6 class="card-price text-center mt-5">Your interests</h6>
-          <div class="card-body card-special">
-           
+          <div class="card-body card-special user">
             <hr>
-            <div id="userinterets">
-      
+
+            <div id="userinterets">     
               <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
-              <input class='usertable' value="<%= interest %>"></input >
+              <input class='usertable  ' value="<%= interest %>"></input >
               <% }); %> <% } %>
             </div>
           </div>
+          <button id='save' class='btn btn-success btn-user mb-2 mt-2' >Save</button>
+
         </div>
       </div>
     </div>
@@ -64,7 +81,5 @@
 
 
     
-      <button id='save'>Save</button>
-      <a href="/post"> See your all posts that u like </a>
   </body>
 </html>
