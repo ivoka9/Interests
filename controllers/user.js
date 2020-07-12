@@ -73,6 +73,7 @@ router.post("/interests", async (req, res) => {
           allInterests: allInterests,
           userinterests: findUser.interests,
           err: err,
+          userid: req.session.user.id,
         };
         return res.render("user/interests.ejs", data);
       }
@@ -114,6 +115,7 @@ router.post("/interests/add", async (req, res) => {
       allInterests: allInterests,
       userinterests: findUser.interests,
       err: err,
+      userid: req.session.user.id,
     };
     return res.render("user/interests.ejs", data);
   } catch (err) {
