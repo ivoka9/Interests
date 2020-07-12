@@ -69,12 +69,12 @@
 }
 
 .nav-custom {
-  color: #c71c2a;
+  color: whitesmoke;
   opacity: 0.75;
   background-color: #28a745;
   transition: 0.4s;
 }
 .nav-custom:hover {
   opacity: 1;
-  color: #c71c2a;
+  color: whitesmoke;
 }
