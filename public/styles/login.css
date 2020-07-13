@@ -26,6 +26,7 @@
 
 .hero-box-button {
   width: 220px;
+  background: #555;
   margin: 35px auto;
   position: relative;
   box-shadow: 0 0 20px 9px #ff61241f;
@@ -33,6 +34,8 @@
 }
 
 .hero-box-button-toggle {
+  color: whitesmoke;
+  font-weight: 700;
   padding: 10px 30px;
   cursor: pointer;
   background: transparent;
@@ -71,6 +74,8 @@
 
 .hero-box-form-submit {
   width: 85%;
+  font-weight: 700;
+  color: whitesmoke;
   padding: 10px 30px;
   cursor: pointer;
   display: block;

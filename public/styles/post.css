@@ -1,0 +1,24 @@
+.tags {
+  margin-top: 150px;
+}
+
+.tag {
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 22px;
+}
+
+.nav-custom {
+  color: whitesmoke;
+  opacity: 0.75;
+  background-color: #28a745;
+  transition: 0.4s;
+}
+.nav-custom:hover {
+  opacity: 1;
+  color: whitesmoke;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

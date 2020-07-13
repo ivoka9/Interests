@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Posts</title>
-    <link
-      rel="stylesheet"
-      href="/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css"
-    />
 
     <link
       rel="stylesheet"
@@ -19,13 +15,14 @@
     <link rel="stylesheet" href="/styles/allpost.css" />
 
     <script defer src="https://use.fontawesome.com/8927d4fe92.js"></script>
+    <script defer src="/scripts/navigator.js"></script>
   </head>
   <body>
     <nav>
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-active nav-link nav-custom rounded-0" href="#"
-            >Active</a
+          <a class="nav-link nav-custom rounded-0" href="/interests"
+            >My Interests</a
           >
         </li>
         <li class="nav-item">
@@ -34,14 +31,17 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-custom rounded-0" href="post/mine/<%=userid%>"
+          <a class="nav-link nav-custom rounded-0" href="/post/mine/<%=userid%>"
             >My posts</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-custom rounded-0" href="post/create"
+          <a class="nav-link nav-custom rounded-0" href="/post/create"
             >Create a Post</a
           >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/logout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -70,7 +70,7 @@
             <h2 class="card-data-title"><%= post.Title %></h2>
             <p class="card-data-description"><%= post.Description %></p>
             <div class="card-data-cta">
-              <a href="#">Read More &rarr;</a>
+              <a href="post/<%=post._id%>">Read More &rarr;</a>
             </div>
           </div>
         </div>

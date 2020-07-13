@@ -93,7 +93,7 @@ $("#des").on("keyup", () => {
 $("#create").on("click", async (element) => {
   let arr = [];
   for (let i = 0; i < $(".posttable").length; i++) {
-    arr.push($(".posttable").eq(i).attr("id"));
+    arr.push($(".posttable").eq(i).val());
   }
   Title = $("#title");
   Descrpiton = $("#des");
@@ -122,6 +122,28 @@ $("#create").on("click", async (element) => {
 });
 
 flagCheck = (Title, Descrpiton) => {
-  if (Title.val().length < 3 || Descrpiton.val().length < 3) return false;
+  $("#des").css("border", "1px solid black");
+  $("#title").css("border", "1px solid black");
+  let flag = false;
+  if (Title.val().length < 3) {
+    $("#title").css("border", "1px solid red");
+
+    $("#title").attr(
+      "placeholder",
+      "Enter a Title (must be more then 2 letters)"
+    );
+    flag = true;
+  }
+  if (Descrpiton.val().length < 3) {
+    $("#des").css("border", "1px solid red");
+
+    $("#des").attr(
+      "placeholder",
+      "Enter a Descrpiton (must be more then 2 letters)"
+    );
+    flag = true;
+  }
+  if (flag) return false;
+
   return true;
 };

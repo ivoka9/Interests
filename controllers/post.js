@@ -5,7 +5,11 @@ const db = require("../models");
 
 // getting all the posts
 router.get("/", async (req, res) => {
-  allPosts = await db.post.find({});
+  let user = await db.User.findById(req.session.user.id);
+  let arr = user.interests;
+  allPosts = await db.post.find({
+    Interests: { $in: arr },
+  });
   data = {
     allPosts: allPosts,
     userid: req.session.user.id,
@@ -40,7 +44,6 @@ router.post("/create", async (req, res) => {
 
     createdPost = await db.post.create(newPost);
     foundUser = await db.User.findById(req.session.user.id);
-    console.log(foundUser);
     addToUser = await foundUser.Post.push(createdPost);
     await foundUser.save();
     return res.redirect("/post");
@@ -66,4 +69,14 @@ router.get("/mine/:id", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  post = await db.post.findById(req.params.id).populate("User").exec();
+  data = { post: post, userid: req.session.user.id };
+  return res.render("posts/post.ejs", data);
+});
+
+router.delete("/:id/del", async (req, res) => {
+  await db.post.findByIdAndDelete(req.params.id);
+  return res.redirect(`/post/mine/${req.session.user.id}`);
+});
 module.exports = router;

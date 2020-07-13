@@ -28,6 +28,7 @@ app.use(
 );
 
 app.use("/", control.user);
+app.use("/test", control.test);
 app.use("/post", control.post);
 
 const server = app.listen(PORT, () => {

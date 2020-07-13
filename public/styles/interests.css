@@ -30,6 +30,8 @@
 
 .table,
 .usertable {
+  padding: 5px;
+  color: whitesmoke;
   border: none;
   border-radius: 5px;
   border-bottom: 1px solid black;
@@ -51,7 +53,6 @@
 .usertable {
   width: 100%;
   margin-bottom: 1rem;
-  color: #212529;
 }
 
 .control {
