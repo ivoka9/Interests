@@ -1,19 +1,26 @@
 // adds new elements to the user base
+let counter = 0;
 $(".table").on("click", (event) => {
-  const remove = event.target.id;
+  console.log(counter);
+  if (counter + 1 < 7) {
+    counter++;
 
-  const value = $(`#${remove}`).val();
-  const id = $(`#${remove}`).attr("id");
+    const remove = event.target.id;
 
-  $(`#${remove}`).remove();
+    const value = $(`#${remove}`).val();
+    const id = $(`#${remove}`).attr("id");
 
-  $("#postinterests").append(
-    `<input class="posttable" onclick="posttable(this.id)" id="${id}" value="${value}"></input>`
-  );
+    $(`#${remove}`).remove();
+
+    $("#postinterests").append(
+      `<input class="posttable btn btn-info rounded btn-interest" onclick="posttable(this.id)" id="${id}" value="${value}"></input>`
+    );
+  }
 });
 
 // removes elements from the user base and adds them to the main base
 $(".posttable").on("click", (event) => {
+  counter--;
   const remove = event.target.id;
 
   const value = $(`#${remove}`).val();
@@ -29,23 +36,27 @@ $(".posttable").on("click", (event) => {
 // those do the same as the upper two functions  , just with the onclick
 // event instead of using the Jquery selector
 function posttable(id) {
+  counter--;
   const value = $(`#${id}`).val();
 
   $(`#${id}`).remove();
 
   $("#allintersts").append(
-    `<input class="table" onclick='table(this.id)' id="${id}" value="${value}" />`
+    `<input class="table " onclick='table(this.id)' id="${id}" value="${value}" />`
   );
 }
 
 function table(id) {
-  const value = $(`#${id}`).val();
+  if (counter + 1 < 7) {
+    counter++;
+    const value = $(`#${id}`).val();
 
-  $(`#${id}`).remove();
+    $(`#${id}`).remove();
 
-  $("#postinterests").append(
-    `<input class="table" onclick='posttable(this.id)' id="${id}" value="${value}" />`
-  );
+    $("#postinterests").append(
+      `<input class="posttable btn btn-info rounded btn-interest " onclick='posttable(this.id)' id="${id}" value="${value}" />`
+    );
+  }
 }
 
 // search box function
@@ -63,6 +74,19 @@ $("#search").on("keyup", () => {
   }
 });
 
+// live input
+$("#title").on("keyup", () => {
+  $("#title-live").text($("#title").val());
+});
+
+$("#url").on("keyup", () => {
+  $("#img-live").attr("src", $("#url").val());
+});
+
+$("#des").on("keyup", () => {
+  $("#des-live").text($("#des").val());
+});
+
 // sends the data back to the server so we can create
 // his new interests list/array
 
@@ -71,14 +95,14 @@ $("#create").on("click", async (element) => {
   for (let i = 0; i < $(".posttable").length; i++) {
     arr.push($(".posttable").eq(i).attr("id"));
   }
-  Title = $("#Title");
-  Descrpiton = $("#Description");
+  Title = $("#title");
+  Descrpiton = $("#des");
   if (!flagCheck(Title, Descrpiton)) {
     element.preventDefault();
 
     return console.log("err");
   }
-  Url = $("#Url").val();
+  Url = $("#url").val();
   data = {
     arr: arr,
     Title: Title.val(),
@@ -94,7 +118,7 @@ $("#create").on("click", async (element) => {
 
     body: JSON.stringify(data),
   };
-  fetch("/post/create", options);
+  await fetch("/post/create", options);
 });
 
 flagCheck = (Title, Descrpiton) => {

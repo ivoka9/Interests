@@ -25,8 +25,8 @@
     <nav>
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-active nav-link nav-custom rounded-0" href="#"
-            >Active</a
+          <a class=" nav-link nav-custom rounded-0" href="/interests"
+            >My Interests</a
           >
         </li>
         <li class="nav-item">
@@ -49,9 +49,11 @@
 
 
 <div class="row">
-    <div class="col-lg-4 control ">
+  
+    <div class="col-lg-3 control">
+      <h2 class='text-center'>Add interests</h2>
+
       <div class="card mb-5 mb-lg-0 ">
-        <h6 class="card-price text-center mt-5">All interests</h6>
         <input id='search' placeholder="Search..." />
         <div class="card-body card-special">         
           <hr>
@@ -63,31 +65,41 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 control ">
-     
+
+    <div class="col-lg-3 control ml-9 ">
+      <h2 class='text-center' >Post  Information</h2>
+
+      <div class="card">
       <form action="/posts/create" method="post">
-        <input type="text" placeholder="Title" maxlength="10" maxlength="3" name="Title" id="Title" />
-        <input type="text" placeholder="Descrpiton" minlength="3" name="Description" id="Description" />
-        <input type="text" placeholder="Add a picture Url" name="Url"id="Url" />
+        <input type="text" id='url' placeholder="Add a picture Url" name="Url" />
+        <input type="text" id='title' placeholder="Title" maxlength="15" maxlength="3" name="Title" />
+        <textarea type="text" id='des' rows='10' col='20' placeholder="Descrpiton" minlength="3" name="Description"  ></textarea>
       </form>
-        <div class="card ">
+    </div>
+    </div>
+
+    <div class="col-lg-3 control ml-8">
+     
+    <h2 class='text-center' >Live Preview</h2>
+        <div class="card  ">
           <div class="card-image-data">
-           <img src="" alt="">
+           <img id='img-live' height="200px" width="100%" src="/img/people-silhouette-during-sunset-853168.jpg" alt="">
             <div class="card-image-data-details">
                 <i class="fa fa-user"></i
               ></a>
             </div>
           </div>
-          <div class="card-data">
-            <h2 class="card-data-title">Title</h2>
-            <p class="card-data-description">Descrpiton</p>
+          <div class="card-data ml-4 mt-3">
+            <h2 id='title-live' class="card-data-title">Title</h2>
+            <p  id='des-live'class="card-data-description">Descrpiton</p>
             <div class="card-data-cta">
               <a href="#">Read More &rarr;</a>
             </div>
           </div>
-          <div id="postinterests"></div>
+          <div id="postinterests" class="ml-4" ></div>
+          <a  href='/post' class='btn btn-success btn-user 'id='create'>Create Post</a> 
+
         </div>
-      <a  href='/post' class='btn btn-success btn-user'id='create'>Create Post</a> 
   
      </div>
    </div> 

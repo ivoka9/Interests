@@ -124,6 +124,25 @@ router.post("/interests/add", async (req, res) => {
   }
 });
 
+router.get("/interests", async (req, res) => {
+  let err = "";
+  try {
+    const allInterests = await db.allInterests.find({});
+    const findUser = await db.User.findById(req.session.user.id);
+
+    const data = {
+      allInterests: allInterests,
+      userinterests: findUser.interests,
+      err: err,
+      userid: req.session.user.id,
+    };
+    return res.render("user/interests.ejs", data);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
 router.put("/interests/api", async (req, res) => {
   try {
     let arr = req.body;

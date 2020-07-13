@@ -4,11 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Posts</title>
+    <link
+      rel="stylesheet"
+      href="/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles/allpost.css" />
   </head>
   <body>
-    <h1>My posts</h1>
-    <% myPosts[0].Post.forEach(post => { %>
-    <p><%= post.Title %></p>
-    <% }) %>
+    <nav>
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-active nav-link nav-custom rounded-0" href="#"
+            >Active</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="/post" class="nav-link nav-custom rounded-0">
+            See your all posts that u like
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/post/mine/<%=userid%>"
+            >My posts</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/post/create"
+            >Create a Post</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/post/create"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <% myPosts[0].Post.forEach(post => { %>
+      <div class="card col-lg-3">
+        <div class="radius">
+          <div class="card-image-data">
+            <div class="card-image-data-background">
+              <%try { %> <% if(post.Url) { %>
+              <img src="<%=post.Url%>" alt="" />
+              <% }else{%>
+              <img
+                src="/img/people-silhouette-during-sunset-853168.jpg"
+                alt=""
+              />
+              <%}%> <% }catch{ %>
+              <img
+                src="/img/people-silhouette-during-sunset-853168.jpg"
+                alt=""
+              />
+              <%} %>
+            </div>
+            <div class="card-image-data-details">
+              <a class="user" href="/post/mine/<%=post.User%>"
+                ><i class="fa fa-user"></i
+              ></a>
+            </div>
+          </div>
+          <div class="card-data">
+            <h2 class="card-data-title"><%= post.Title %></h2>
+            <p class="card-data-description"><%= post.Description %></p>
+            <div class="card-data-cta">
+              <a href="#">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </body>
 </html>

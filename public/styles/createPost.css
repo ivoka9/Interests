@@ -24,3 +24,46 @@
 .card-image-data-background img:hover {
   transform: scale(1.5);
 }
+
+#url,
+#des,
+#title {
+  display: block;
+  width: 75%;
+}
+
+#url {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+#title {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+
+#des {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+}
+
+#create {
+  margin: 30px auto;
+}
+.card {
+  height: 500px;
+}
+
+p {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-interest {
+  margin: 5px 15px;
+  width: 25%;
+}

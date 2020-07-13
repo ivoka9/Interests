@@ -169,3 +169,8 @@ p {
   width: 0px;
   background: transparent;
 }
+
+.card,
+.card-data {
+  border-radius: 10px;
+}

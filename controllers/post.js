@@ -37,6 +37,7 @@ router.post("/create", async (req, res) => {
       Interests: req.body.arr,
       User: req.session.user.id,
     };
+
     createdPost = await db.post.create(newPost);
     foundUser = await db.User.findById(req.session.user.id);
     console.log(foundUser);
@@ -52,11 +53,12 @@ router.post("/create", async (req, res) => {
 
 router.get("/mine/:id", async (req, res) => {
   try {
-    const x = await db.User.findById(req.params.id).populate("Post").exec();
+    const post = await db.User.findById(req.params.id).populate("Post").exec();
     let myPosts = [];
-    myPosts.push(x);
+    myPosts.push(post);
     data = {
       myPosts: myPosts,
+      userid: req.session.user.id,
     };
     return res.render("posts/mine.ejs", data);
   } catch (err) {

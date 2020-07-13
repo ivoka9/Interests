@@ -46,24 +46,32 @@
       </ul>
     </nav>
     <div class="container">
-      <h1>Posts</h1>
       <% allPosts.forEach(post => { %>
       <div class="card col-lg-3">
-        <div class="card-image-data">
-          <div class="card-image-data-background">
-            <img src="/img/people-silhouette-during-sunset-853168.jpg" alt="" />
+        <div class="radius">
+          <div class="card-image-data">
+            <div class="card-image-data-background">
+              <% if(post.Url) { %>
+              <img src="<%=post.Url%>" alt="" />
+              <% }else{%>
+              <img
+                src="/img/people-silhouette-during-sunset-853168.jpg"
+                alt=""
+              />
+              <%}%>
+            </div>
+            <div class="card-image-data-details">
+              <a class="user" href="/post/mine/<%=post.User%>"
+                ><i class="fa fa-user"></i
+              ></a>
+            </div>
           </div>
-          <div class="card-image-data-details">
-            <a class="user" href="/post/mine/<%=post.User%>"
-              ><i class="fa fa-user"></i
-            ></a>
-          </div>
-        </div>
-        <div class="card-data">
-          <h2 class="card-data-title"><%= post.Title %></h2>
-          <p class="card-data-description"><%= post.Description %></p>
-          <div class="card-data-cta">
-            <a href="#">Read More &rarr;</a>
+          <div class="card-data">
+            <h2 class="card-data-title"><%= post.Title %></h2>
+            <p class="card-data-description"><%= post.Description %></p>
+            <div class="card-data-cta">
+              <a href="#">Read More &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
