@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Post</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="/styles/interests.css">
+
+    <link rel="stylesheet" href="/styles/createPost.css">
     <script
       defer
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -13,18 +22,77 @@
     <script defer src="/scripts/postCreating.js"></script>
   </head>
   <body>
-    <form action="/posts/create" method="post">
-      <input type="text" placeholder="Title" name="Title" id="Title" />
-      <input type="text" placeholder="Descrpiton" name="Description" id="Description" />
-      <input type="text" placeholder="Add a picture Url" name="Url"id="Url" />
-    </form>
-    <input id='search' placeholder="Search..." />
-    <div id='allintersts'>
-    <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
-      <input class='table' readonly id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
-      <% }); %> <% } %>
+    <nav>
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-active nav-link nav-custom rounded-0" href="#"
+            >Active</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="/post" class="nav-link nav-custom rounded-0">
+            See your all posts that u like
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/post/mine/<%=userid%>"
+            >My posts</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-custom rounded-0" href="/post/create"
+            >Create a Post</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+
+<div class="row">
+    <div class="col-lg-4 control ">
+      <div class="card mb-5 mb-lg-0 ">
+        <h6 class="card-price text-center mt-5">All interests</h6>
+        <input id='search' placeholder="Search..." />
+        <div class="card-body card-special">         
+          <hr>
+          <div id="allintersts" >
+            <% if (allInterests) { %> <% allInterests.forEach(interest => { %>
+            <input class='table' readonly id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
+            <% }); %> <% } %>
+          </div>
+        </div>
+      </div>
     </div>
-      <div id='postinterests'></div>
-      <a  href='/post' id='create'>Create Post</a> 
+    <div class="col-lg-4 control ">
+     
+      <form action="/posts/create" method="post">
+        <input type="text" placeholder="Title" maxlength="10" maxlength="3" name="Title" id="Title" />
+        <input type="text" placeholder="Descrpiton" minlength="3" name="Description" id="Description" />
+        <input type="text" placeholder="Add a picture Url" name="Url"id="Url" />
+      </form>
+        <div class="card ">
+          <div class="card-image-data">
+           <img src="" alt="">
+            <div class="card-image-data-details">
+                <i class="fa fa-user"></i
+              ></a>
+            </div>
+          </div>
+          <div class="card-data">
+            <h2 class="card-data-title">Title</h2>
+            <p class="card-data-description">Descrpiton</p>
+            <div class="card-data-cta">
+              <a href="#">Read More &rarr;</a>
+            </div>
+          </div>
+          <div id="postinterests"></div>
+        </div>
+      <a  href='/post' class='btn btn-success btn-user'id='create'>Create Post</a> 
+  
+     </div>
+   </div> 
+ 
+ 
+   
   </body>
 </html>

@@ -3,23 +3,30 @@ const router = express.Router();
 
 const db = require("../models");
 
+// getting all the posts
 router.get("/", async (req, res) => {
   allPosts = await db.post.find({});
   data = {
     allPosts: allPosts,
+    userid: req.session.user.id,
   };
   return res.render("posts/allposts.ejs", data);
 });
 
+//Creating  the posts
+
+// The page that lets me create the post
 router.get("/create", async (req, res) => {
   try {
     allInterests = await db.allInterests.find({});
-    data = { allInterests: allInterests };
+    data = { allInterests: allInterests, userid: req.session.user.id };
     return res.render("posts/create.ejs", data);
   } catch (err) {
     console.log(err);
   }
 });
+
+// The post req itself
 
 router.post("/create", async (req, res) => {
   try {
@@ -40,6 +47,8 @@ router.post("/create", async (req, res) => {
     console.log(err);
   }
 });
+
+// seeing all the posts that belong to a user
 
 router.get("/mine/:id", async (req, res) => {
   try {
