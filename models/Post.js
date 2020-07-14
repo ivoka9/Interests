@@ -5,6 +5,8 @@ const Postschema = new mongoose.Schema({
   Description: { type: String, required: true, minlength: 3 },
   Url: { type: String },
   Interests: [{ type: String }],
+  postX: Number,
+  postY: Number,
   User: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

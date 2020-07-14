@@ -174,3 +174,12 @@ p {
 .card-data {
   border-radius: 10px;
 }
+
+#map {
+  height: 80vh;
+  width: 100vw;
+  position: absolute;
+  top: 20%;
+  left: -100vw;
+  transition: 0.5s;
+}

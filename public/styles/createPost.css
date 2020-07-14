@@ -67,3 +67,7 @@ p {
   margin: 5px 15px;
   width: 25%;
 }
+
+#map {
+  height: 60vh;
+}

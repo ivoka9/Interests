@@ -33,6 +33,7 @@ router.get("/create", async (req, res) => {
 // The post req itself
 
 router.post("/create", async (req, res) => {
+  console.log(req.body);
   try {
     newPost = {
       Title: req.body.Title,
@@ -40,6 +41,8 @@ router.post("/create", async (req, res) => {
       Url: req.body.Url,
       Interests: req.body.arr,
       User: req.session.user.id,
+      postX: req.body.postX,
+      postY: req.body.postY,
     };
 
     createdPost = await db.post.create(newPost);
