@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const sessions = require("express-session");
 const store = require("connect-mongo")(sessions);
-require("dotenv").config();
 
 // My requirements
 const control = require("./controllers");

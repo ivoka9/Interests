@@ -20,15 +20,17 @@ router.get("/login", (req, res) => {
 // Trying to crate a user
 
 router.post("/login", async (req, res) => {
+  console.log("het");
+
   try {
     let usernameTakenFlag = false;
     const wrongUsernameOrPassword = false;
+    let accCreated = false;
+
     // If one already excists Return him to the Register page with  Error
     const alreadyMade = await db.User.findOne({ Username: req.body.username });
     if (alreadyMade) {
       usernameTakenFlag = true;
-      const accCreated = false;
-
       const data = { usernameTakenFlag, wrongUsernameOrPassword, accCreated };
       return res.render("user/index.ejs", data);
     }
@@ -41,7 +43,7 @@ router.post("/login", async (req, res) => {
       Password: req.body.password,
     };
     await db.User.create(user);
-    const accCreated = true;
+    accCreated = true;
 
     const data = { usernameTakenFlag, wrongUsernameOrPassword, accCreated };
     // Returns him to the Login so he can login
@@ -82,12 +84,14 @@ router.post("/interests", async (req, res) => {
         return res.render("user/interests.ejs", data);
       }
     }
+    const accCreated = false;
 
     const usernameTakenFlag = false;
     const wrongUsernameOrPassword = true;
     data = {
       usernameTakenFlag,
       wrongUsernameOrPassword,
+      accCreated,
     };
     // If not he get send back to the Login page with an Error
     return res.render("user/index.ejs", data);
@@ -102,6 +106,7 @@ router.post("/interests", async (req, res) => {
 // to his own databse
 router.post("/interests/add", async (req, res) => {
   let err = "";
+
   try {
     try {
       await db.allInterests.create(req.body);
