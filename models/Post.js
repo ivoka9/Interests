@@ -7,6 +7,7 @@ const Postschema = new mongoose.Schema({
   Interests: [{ type: String }],
   postX: Number,
   postY: Number,
+  joined: [String],
   User: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

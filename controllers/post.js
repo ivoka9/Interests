@@ -74,12 +74,41 @@ router.get("/mine/:id", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   post = await db.post.findById(req.params.id).populate("User").exec();
-  data = { post: post, userid: req.session.user.id };
+  data = {
+    post: post,
+    userid: req.session.user.id,
+    username: req.session.user.username,
+  };
   return res.render("posts/post.ejs", data);
 });
 
 router.delete("/:id/del", async (req, res) => {
   await db.post.findByIdAndDelete(req.params.id);
   return res.redirect(`/post/mine/${req.session.user.id}`);
+});
+
+router.put("/join/:id", async (req, res) => {
+  try {
+    let post = await db.post.findById(req.params.id);
+    post.joined.push(req.session.user.username);
+    post.save();
+    console.log(post);
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/post/" + req.params.id);
+});
+
+router.put("/leave/:id", async (req, res) => {
+  try {
+    let post = await db.post.findById(req.params.id);
+    let remove = post.joined.indexOf(req.session.user.username);
+    post.joined.splice(remove, 1);
+    post.save();
+    console.log(post);
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/post/" + req.params.id);
 });
 module.exports = router;

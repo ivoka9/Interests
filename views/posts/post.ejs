@@ -87,7 +87,7 @@
           <img
             class="img-fluid rounded"
             src="<%=post.Url%>"
-            alt=""
+            alt="/img/people-silhouette-during-sunset-853168.jpg"
           />
            <% }else{ %>
             <img
@@ -127,6 +127,7 @@
           
           </div>
           <!-- Side Widget -->
+         
           <%if(post.User._id == userid){  %>
             <div class="card my-4 text-center">
               <h5 class="card-header ">Permenetly Delete the Post</h5>
@@ -135,7 +136,25 @@
               </form>
             </div>
             
-          <% } %> 
+          <% }else if (post.joined.indexOf(username)==-1) { %> 
+            <div class="card my-4 text-center">
+              <h5 class="card-header ">Join the event</h5>
+              <form class='mt-3 mb-3' action="/post/join/<%=post._id%>?_method=PUT" method="POST">
+                <input class='btn btn-success 'type="submit" value="Join">
+              </form>
+            </div>
+          <% }else{ %> 
+            <div class="card my-4 text-center">
+              <h5 class="card-header ">Leave the event</h5>
+              <form class='mt-3 mb-3' action="/post/leave/<%=post._id%>?_method=PUT" method="POST">
+                <input class='btn btn-danger 'type="submit" value="Leave">
+              </form>
+            </div>
+          <% } %>
+          <div class="card my-4 text-center">
+            <h5 class="card-header ">Number of pepole that have joined</h5>
+           <h5 class='mt-2 '> <%= post.joined.length %> </h5>
+          </div>
           <% if(post.postX){ %>
             <div id='map' style="height: 350px;"></div>
             <input type="number" id='postx' value="<%=post.postX%>" hidden readonly>

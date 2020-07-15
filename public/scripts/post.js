@@ -22,7 +22,18 @@ if (navigator.geolocation) {
     ).addTo(mymap);
     // adding the ' You are Here '
 
-    let yourlocation = L.marker([y, x]).addTo(mymap);
+    let red = new L.Icon({
+      iconUrl:
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+      shadowUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+
+    const yourlocation = L.marker([y, x], { icon: red }).addTo(mymap);
     yourlocation.bindPopup("<h3>You are Here</h3>").openPopup();
 
     eventLocation = L.marker([$("#posty").val(), $("#postx").val()]).addTo(
