@@ -60,7 +60,7 @@
            
             <hr>
             <div id="allintersts" >
-              <% if (allInterests,length!=0) { %> <% allInterests.forEach(interest => { %>
+              <% if (allInterests.length!=0) { %> <% allInterests.forEach(interest => { %>
               <input class='table' readonly id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
               <% }); %> <% } %>
             </div>
