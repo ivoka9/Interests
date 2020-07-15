@@ -20,7 +20,7 @@ app.use(methodOverride("_method"));
 app.use(
   sessions({
     store: new store({
-      url: process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/final",
+      url: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/final",
     }),
     secret: process.env.SECRET_KEY || "random",
     resave: false,

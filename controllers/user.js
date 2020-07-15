@@ -9,7 +9,7 @@ const db = require("../models");
 
 // Going to Login page
 
-router.get("/login", (req, res) => {
+router.get("/", (req, res) => {
   const wrongUsernameOrPassword = false;
   const usernameTakenFlag = false;
   const accCreated = false;
@@ -19,9 +19,7 @@ router.get("/login", (req, res) => {
 
 // Trying to crate a user
 
-router.post("/login", async (req, res) => {
-  console.log("het");
-
+router.post("/", async (req, res) => {
   try {
     let usernameTakenFlag = false;
     const wrongUsernameOrPassword = false;
