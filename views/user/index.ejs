@@ -40,6 +40,9 @@
           action="/interests"
           method="POST"
         >
+          <% if(accCreated) { %>
+          <p style="color: green;">Your account was sucessfuly created</p>
+          <% }%>
           <input
             type="text"
             required

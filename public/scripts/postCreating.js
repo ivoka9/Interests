@@ -99,7 +99,7 @@ $("#create").on("click", async (element) => {
   }
   Title = $("#title");
   Descrpiton = $("#des");
-  if (!flagCheck(Title, Descrpiton)) {
+  if (!flagCheck(Title, Descrpiton, arr)) {
     element.preventDefault();
 
     return console.log("err");
@@ -125,9 +125,12 @@ $("#create").on("click", async (element) => {
   await fetch("/post/create", options);
 });
 
-flagCheck = (Title, Descrpiton) => {
+flagCheck = (Title, Descrpiton, arr) => {
   $("#des").css("border", "1px solid black");
   $("#title").css("border", "1px solid black");
+  $("#control").css("border", "none");
+  $("#interestflag").children("h6").remove();
+
   let flag = false;
   if (Title.val().length < 3) {
     $("#title").css("border", "1px solid red");
@@ -145,6 +148,16 @@ flagCheck = (Title, Descrpiton) => {
       "placeholder",
       "Enter a Descrpiton (must be more then 2 letters)"
     );
+    flag = true;
+  }
+  if (arr.length == 0) {
+    $("#control").css("border", "1px solid red");
+    $("#interestflag").append(
+      "<h6 id='removeMe'> please add some interests so other users can see it</h6>"
+    );
+    $("#removeMe").css("font-weight", "normal");
+    $("#removeMe").css("color", "red");
+
     flag = true;
   }
   if (flag) return false;

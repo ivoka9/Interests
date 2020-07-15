@@ -12,7 +12,8 @@ const db = require("../models");
 router.get("/login", (req, res) => {
   const wrongUsernameOrPassword = false;
   const usernameTakenFlag = false;
-  const data = { usernameTakenFlag, wrongUsernameOrPassword };
+  const accCreated = false;
+  const data = { usernameTakenFlag, wrongUsernameOrPassword, accCreated };
   res.render("user/index.ejs", data);
 });
 
@@ -26,7 +27,9 @@ router.post("/login", async (req, res) => {
     const alreadyMade = await db.User.findOne({ Username: req.body.username });
     if (alreadyMade) {
       usernameTakenFlag = true;
-      const data = { usernameTakenFlag, wrongUsernameOrPassword };
+      const accCreated = false;
+
+      const data = { usernameTakenFlag, wrongUsernameOrPassword, accCreated };
       return res.render("user/index.ejs", data);
     }
     // Otherwise it Creates the User
@@ -38,8 +41,9 @@ router.post("/login", async (req, res) => {
       Password: req.body.password,
     };
     await db.User.create(user);
+    const accCreated = true;
 
-    const data = { usernameTakenFlag, wrongUsernameOrPassword };
+    const data = { usernameTakenFlag, wrongUsernameOrPassword, accCreated };
     // Returns him to the Login so he can login
     return res.render("user/index.ejs", data);
     // Error handaling
