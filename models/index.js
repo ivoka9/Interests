@@ -3,7 +3,7 @@ const url = "mongodb://127.0.0.1:27017/final";
 
 // Mongoose connection
 mongoose
-  .connect(process.env.MONGODB_URL || url, {
+  .connect(process.env.MONGODB_URI || url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
