@@ -15,11 +15,11 @@ then clone it on yout local machine and run 'npm i' this will install all the de
 also make sure that you have a working MongooseDB , after those steps have been completed
 go to your localhost port 4000 and enjoy.
 
-Link to your user stories - who are your users, what do they want, and why?
-
 This application is made for everyone who is looking forward
 to post or join an existing event and meet with new people,
 and have fun.
+
+![](public/img/wireframe/login.jpg
 
 the app can be updated by adding comments to each post that will allow users to communicate.
 
