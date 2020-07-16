@@ -1,5 +1,5 @@
 .card-special {
-  height: 350px;
+  height: 250px;
   overflow: auto;
 }
 
@@ -9,7 +9,7 @@
   border-radius: 5px;
   width: 45%;
   height: 40px;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 0;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .control {
-  margin: 80px 66px;
+  margin: 0px 66px;
 }
 
 .btn-user {
@@ -78,4 +78,16 @@
 .nav-custom:hover {
   opacity: 1;
   color: whitesmoke;
+}
+
+.card-price {
+  font-size: 12px;
+}
+
+.fix {
+  height: 280px;
+}
+
+#err {
+  color: red;
 }

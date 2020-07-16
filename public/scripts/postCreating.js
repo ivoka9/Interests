@@ -201,7 +201,7 @@ if (navigator.geolocation) {
     });
 
     const yourlocation = L.marker([y, x], { icon: red }).addTo(mymap);
-    yourlocation.bindPopup("<h3>You are Here</h3>").openPopup();
+    yourlocation.bindPopup("<h5>You are Here</h5>").openPopup();
 
     // adding the event location
     function onMapClick(e) {
@@ -209,7 +209,7 @@ if (navigator.geolocation) {
 
       eventLocation.remove();
       eventLocation = L.marker([courdinates.lat, courdinates.lng]).addTo(mymap);
-      eventLocation.bindPopup("<h3>Event Location</h3>").openPopup();
+      eventLocation.bindPopup("<h5>Event Location</h5>").openPopup();
 
       //appends it to the hidden inputs
       $("#postx").val(courdinates.lng);

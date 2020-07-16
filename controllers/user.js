@@ -170,7 +170,7 @@ router.put("/interests/api", async (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.session.destroy();
-  return res.redirect("/login");
+  return res.redirect("/");
 });
 
 module.exports = router;

@@ -47,18 +47,25 @@
     <div class="row">
       <!-- Free Tier -->
       <div class="col-lg-4 control ">
-        <div class="card mb-5 mb-lg-0 ">
-          <h6 class="card-price text-center mt-5">All interests</h6>
+        <div class="card mb-2 mb-lg-0 ">
+          <h6 class="card-price text-center mt-3 pt-3">All interests</h6>
           <form action="/interests/add " method="POST">
-            <% if(err){ %>
-              <p class='ml-5 mt-2' style="color: red ;">It already excists</p>
-            <% } %>
+           
+              <p id='err' class=' mt-2 text-center' 
+               <% if(!err){ %>
+              style ="visibility: hidden ;"
+                <% }else{ %>   
+                  style ="visibility: visible ;"
+                <% } %>
+              >It already excists</p>
+            
             <input type="text" autocomplete="off" placeholder="Add your own" name="interest" id='search' class='input-find ml-5' />
             <input type="submit" class=' btn-special btn pb-1 btn-primary ml-2   '  />
           </form>
+          <hr>
+
           <div class="card-body card-special">
            
-            <hr>
             <div id="allintersts" >
               <% if (allInterests.length!=0) { %> <% allInterests.forEach(interest => { %>
               <input class='table' readonly id='<%= interest._id %>' value ='<%= interest.interest %>'></input >
@@ -70,10 +77,11 @@
     
       <!-- Pro Tier -->
       <div class="col-lg-4 control pixels">
-        <div class="card mb-5 mb-lg-0 ">
-          <h6 class="card-price text-center mt-5">Your interests</h6>
-          <div class="card-body card-special user">
-            <hr>
+        <div class="card mb-2 mb-lg-0 ">
+          <h6 class="card-price text-center mt-3 ">Your interests</h6>
+          <hr>
+
+          <div class="card-body card-special user fix">
 
             <div id="userinterets">     
               <% if (userinterests) { %> <% userinterests.forEach(interest => { %>
@@ -81,7 +89,7 @@
               <% }); %> <% } %>
             </div>
           </div>
-          <button id='save' class='btn btn-success btn-user mb-2 mt-2' >Save</button>
+          <button id='save' class='btn btn-success btn-user mb-4 mt-4' >Save</button>
 
         </div>
       </div>

@@ -51,9 +51,10 @@
 
 #create {
   margin: 30px auto;
+  padding-bottom: 5px;
 }
 .card {
-  height: 500px;
+  height: 400px;
 }
 
 p {
@@ -70,4 +71,12 @@ p {
 
 #map {
   height: 60vh;
+}
+
+.control {
+  margin: 10px 20px;
+}
+
+.row {
+  justify-content: space-around;
 }

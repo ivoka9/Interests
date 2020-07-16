@@ -33,7 +33,6 @@ router.get("/create", async (req, res) => {
 // The post req itself
 
 router.post("/create", async (req, res) => {
-  console.log(req.body);
   try {
     newPost = {
       Title: req.body.Title,
@@ -92,7 +91,6 @@ router.put("/join/:id", async (req, res) => {
     let post = await db.post.findById(req.params.id);
     post.joined.push(req.session.user.username);
     post.save();
-    console.log(post);
   } catch (err) {
     console.log(err);
   }
@@ -105,7 +103,6 @@ router.put("/leave/:id", async (req, res) => {
     let remove = post.joined.indexOf(req.session.user.username);
     post.joined.splice(remove, 1);
     post.save();
-    console.log(post);
   } catch (err) {
     console.log(err);
   }
