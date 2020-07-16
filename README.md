@@ -19,19 +19,24 @@ This application is made for everyone who is looking forward
 to post or join an existing event and meet with new people,
 and have fun.
 
-Login page
+Login page:
+
 ![](public/wireframe/login.jpg)
 
-Create page
+Create page:
+
 ![](public/wireframe/create.jpg)
 
-All the posts 
+All the posts :
+
 ![](public/wireframe/interests.jpg)
 
-Adding and removing interests
+Adding and removing interests:
+
 ![](public/wireframe/interests.jpg)
 
-Database connections
+Database connections:
+
 ![](public/wireframe/database.png)
 
 the app can be updated by adding comments to each post that will allow users to communicate.
