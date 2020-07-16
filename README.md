@@ -22,3 +22,4 @@ to post or join an existing event and meet with new people,
 and have fun.
 
 the app can be updated by adding comments to each post that will allow users to communicate.
+
